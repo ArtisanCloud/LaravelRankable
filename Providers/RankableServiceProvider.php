@@ -32,7 +32,7 @@ class RankableServiceProvider extends ServiceProvider
     public function boot()
     {
         // config framework router
-//        $this->configRouter();
+        $this->configRouter();
 
         // load translation resource
 //        $this->loadTranslationsFrom(__DIR__.'/../resources/lang', 'todoable');
@@ -52,7 +52,7 @@ class RankableServiceProvider extends ServiceProvider
 
     public function configRouter()
     {
-//        $this->loadRoutesFrom(__DIR__ . '/../routes/api.php');
+        $this->loadRoutesFrom(__DIR__ . '/../routes/api.php');
 
     }
 }
