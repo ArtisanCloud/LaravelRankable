@@ -31,7 +31,9 @@ trait Rankable
         $this->{$this->key} = $middleRank;
         $bResult = $this->save();
 //        dump($prevItem->{$this->key}, $this->{$this->key}, $nextItem->{$this->key});
-
+        if($bResult){
+            return $middleRank;
+        }
         return $bResult;
     }
 }

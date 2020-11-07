@@ -31,16 +31,16 @@ class RankAPIController extends APIController
     public function apiRankItem(RequestRankPlace $request)
     {
 
-        $bResult = \DB::connection('pgsql')->transaction(function () use ($request) {
+        $rank = \DB::connection('pgsql')->transaction(function () use ($request) {
             
             try {
                 $arrayData = $request->all();
 //                dd($arrayData);
 
                 $rankable = $arrayData['rankable'];
-                $bResult = $rankable->placeBetween($arrayData['prev_item'],$arrayData['next_item']);
+                $rank = $rankable->placeBetween($arrayData['prev_item'],$arrayData['next_item']);
 //                dd($rankable);
-                if (is_null($bResult)) {
+                if (!$rank) {
                     throw new \Exception('', API_ERR_CODE_FAIL_TO_PLACE_ITEM);
                 }
 
@@ -52,11 +52,11 @@ class RankAPIController extends APIController
                 );
             }
 
-            return $bResult;
+            return $rank;
 
         });
 
-        $this->m_apiResponse->setData($bResult);
+        $this->m_apiResponse->setData($rank);
 
         return $this->m_apiResponse->toResponse();
     }
