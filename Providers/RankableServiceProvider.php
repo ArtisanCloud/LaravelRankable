@@ -21,7 +21,8 @@ class RankableServiceProvider extends ServiceProvider
     {
         //
         // Load the config file and merge it with the user's (should it get published)
-//        include_once(__DIR__.'/../config/constant.php');
+        include_once(__DIR__.'/../config/constant.php');
+
     }
 
     /**
@@ -35,7 +36,7 @@ class RankableServiceProvider extends ServiceProvider
         $this->configRouter();
 
         // load translation resource
-//        $this->loadTranslationsFrom(__DIR__.'/../resources/lang', 'todoable');
+        $this->loadTranslationsFrom(__DIR__.'/../resources/lang', RANKABLE_LANG);
 
 //        if ($this->app->runningInConsole()) {
 //            // publish config file
